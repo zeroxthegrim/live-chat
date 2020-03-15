@@ -15,7 +15,6 @@ newChat.addEventListener("submit", e => {
     chatroom.addChat(message)
         .then(() => {
             newChat.reset();
-            chatUI.setScrollbar();
         })
         .catch(err => console.log(err));
 });
