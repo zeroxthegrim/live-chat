@@ -20,10 +20,9 @@ class ChatUI {
             </li>
         `;
         this.list.innerHTML += html;
-    }
-    setScrollbar() {
+
+        // sets the scrollsbar to the bottom
         this.list.scrollTop = this.list.scrollHeight - this.list.clientHeight;
-        console.log("setting scrollbar");
     }
     highlightBtn(selectedBtn) {
         this.roomBtns.forEach(btn => {
