@@ -3,6 +3,12 @@ const newChat = document.querySelector(".new-chat");
 const newName = document.querySelector(".new-name");
 const updateMssg = document.querySelector(".update-mssg");
 const rooms = document.querySelector(".chat-rooms");
+const allBtns = document.querySelectorAll(".chat-rooms .btn");
+const generalRoomBtn = document.querySelector(".chat-rooms #general");
+
+
+
+
 
 // sending new messages
 newChat.addEventListener("submit", e => {
@@ -10,7 +16,10 @@ newChat.addEventListener("submit", e => {
 
     const message = newChat.message.value.trim();
     chatroom.addChat(message)
-        .then(() => newChat.reset())
+        .then(() => {
+            newChat.reset();
+            chatUI.setScrollbar();
+        })
         .catch(err => console.log(err));
 });
 
@@ -32,7 +41,10 @@ newName.addEventListener("submit", e => {
 
 rooms.addEventListener("click", e => {
     if (e.target.tagName === "BUTTON") {
+        console.log(e.target);
+        chatUI.highlightBtn(e.target);
         chatUI.clear();
+    
         chatroom.changeRoom(e.target.getAttribute("id"));
         chatroom.getChats(chats => chatUI.render(chats));
     }
@@ -41,8 +53,19 @@ rooms.addEventListener("click", e => {
 const user = localStorage.username ? localStorage.username : "anon"
 
 const chatroom = new Chatroom(user, "general");
-const chatUI = new ChatUI(chatList);
+const chatUI = new ChatUI(chatList, allBtns);
+
+
 
 chatroom.getChats(data => chatUI.render(data));
+
+//
+chatUI.highlightBtn(generalRoomBtn);
+
+// scrolls the scroll bar to the bottom
+// setTimeout(() => {
+//     chatUI.setScrollbar();
+// }, 500);
+
 
 
