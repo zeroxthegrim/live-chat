@@ -1,6 +1,7 @@
 class ChatUI {
-    constructor(list) {
+    constructor(list, roomBtns) {
         this.list = list;
+        this.roomBtns = roomBtns;
     }
     clear() {
         this.list.innerHTML = "";
@@ -20,4 +21,17 @@ class ChatUI {
         `;
         this.list.innerHTML += html;
     }
+    setScrollbar() {
+        this.list.scrollTop = this.list.scrollHeight - this.list.clientHeight;
+        console.log("setting scrollbar");
+    }
+    highlightBtn(selectedBtn) {
+        this.roomBtns.forEach(btn => {
+            if (btn.classList.contains("selected-btn")) {
+                btn.classList.remove("selected-btn");
+            }
+        });
+        selectedBtn.classList.add("selected-btn");
+    }
+
 }
