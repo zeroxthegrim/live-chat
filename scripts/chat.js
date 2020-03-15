@@ -25,10 +25,7 @@ class Chatroom {
                         callback(doc.doc.data());
                     }
                 });
-            });
-        setTimeout(() => {
-            chatUI.setScrollbar();
-        }, 400);         
+            });       
     }
     changeUsername(username) {
         this.username = username;
