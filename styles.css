@@ -1,16 +1,26 @@
 .container {
     max-width: 600px;
+
 }
 
 .btn {
     background: #8A2BE2/*#43d9be*/;
-    color: white;
+    color: rgb(0, 0, 0);
     outline: none !important;
     box-shadow: none !important;
 }
 
+.selected-btn {
+    color: white !important;
+}
+
 .btn:focus {
     outline: none !important;
+}
+
+.chat-list {
+    height: 500px;
+    overflow-y: scroll;
 }
 
 .username{
@@ -25,4 +35,10 @@
 .update-mssg {
     text-align: center;
     margin: 20px auto;
+}
+
+@media screen and (max-width:480px) {
+    .chat-list {
+        height: 350px;
+    }
 }
