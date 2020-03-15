@@ -26,6 +26,9 @@ class Chatroom {
                     }
                 });
             });
+        setTimeout(() => {
+            chatUI.setScrollbar();
+        }, 400);         
     }
     changeUsername(username) {
         this.username = username;
