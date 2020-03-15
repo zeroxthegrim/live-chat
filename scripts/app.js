@@ -7,9 +7,6 @@ const allBtns = document.querySelectorAll(".chat-rooms .btn");
 const generalRoomBtn = document.querySelector(".chat-rooms #general");
 
 
-
-
-
 // sending new messages
 newChat.addEventListener("submit", e => {
     e.preventDefault();
@@ -50,22 +47,21 @@ rooms.addEventListener("click", e => {
     }
 });
 
+// sets username base on the value in local storage
 const user = localStorage.username ? localStorage.username : "anon"
 
+// creates instances of 2 classes that we use
 const chatroom = new Chatroom(user, "general");
 const chatUI = new ChatUI(chatList, allBtns);
 
 
-
+// gets previous chats
 chatroom.getChats(data => chatUI.render(data));
 
-//
+// highlights "general" room button
 chatUI.highlightBtn(generalRoomBtn);
 
-// scrolls the scroll bar to the bottom
-// setTimeout(() => {
-//     chatUI.setScrollbar();
-// }, 500);
+
 
 
 
